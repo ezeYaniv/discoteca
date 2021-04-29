@@ -72,6 +72,13 @@ class Disco extends React.Component {
 		});
 	}
 
+	borderAnim(colorCount, colors, counter, stepSize) {
+		let border = document.getElementById('page-border');
+		border.style.stroke = colors[colorCount];
+		border.style.strokeDashoffset = (stepSize * counter);
+		console.log(border.style.strokeDasharray);
+	}
+
 	componentDidMount() {
 		const colors = [
 			'#4BBFE6',
@@ -86,10 +93,12 @@ class Disco extends React.Component {
 		];
 		let counter = this.state.duration;
 		let colorCount = 0;
+		let stepSize = 5000/this.state.duration;
 
 		this.timer = setInterval(() => {
 			this.pulse();
-			this.changeColor(colorCount, colors, counter);
+			this.changeColor(colorCount, colors);
+			this.borderAnim(colorCount, colors, counter, stepSize);
 			counter--;
 			if (colorCount === colors.length) {
 				colorCount = 0;
@@ -105,6 +114,7 @@ class Disco extends React.Component {
 			setTimeout(() => {
 				this.pulseAlt();
 				this.changeColor(colorCount, colors);
+				this.borderAnim(colorCount, colors, counter, stepSize);
 				counter--;
 				if (colorCount === colors.length) {
 					colorCount = 0;
@@ -126,6 +136,7 @@ class Disco extends React.Component {
 	render() {
 		return (
 			<div className="page-content">
+			<svg className="page-border" id="page-border"><rect></rect></svg>
 				<div className="disco-container">
 					<div className="letter">D</div>
 					<div className="letter">I</div>

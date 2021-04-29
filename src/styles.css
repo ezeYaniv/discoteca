@@ -34,3 +34,16 @@ html {
 	font-family: sans-serif;
 	transition: all 0.3s;
 }
+
+.page-border {
+	stroke-width: 20px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	stroke-dasharray: 5000;
+}
+
+.page-border rect {
+	width: 100%;
+	height: 100%;
+}
