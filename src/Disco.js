@@ -9,15 +9,15 @@ class Disco extends React.Component {
 		};
 	}
 
-	pulse(counter) {
-		console.log('pulse' + counter);
-
+	pulse() {
 		let letters = Array.from(document.getElementsByClassName('letter'));
 
 		letters
 			.filter((letter, index) => {
 				if (index % 2 === 0) {
 					return letter;
+				} else {
+					return null;
 				}
 			})
 			.forEach((letter) => {
@@ -28,6 +28,8 @@ class Disco extends React.Component {
 			.filter((letter, index) => {
 				if (index % 2 !== 0) {
 					return letter;
+				} else {
+					return null;
 				}
 			})
 			.forEach((letter) => {
@@ -35,14 +37,14 @@ class Disco extends React.Component {
 			});
 	}
 
-	pulseAlt(counter) {
-		console.log('pulseAlt' + counter);
-
+	pulseAlt() {
 		let letters = Array.from(document.getElementsByClassName('letter'));
 		letters
 			.filter((letter, index) => {
 				if (index % 2 === 0) {
 					return letter;
+				} else {
+					return null;
 				}
 			})
 			.forEach((letter) => {
@@ -53,6 +55,8 @@ class Disco extends React.Component {
 			.filter((letter, index) => {
 				if (index % 2 !== 0) {
 					return letter;
+				} else {
+					return null;
 				}
 			})
 			.forEach((letter) => {
@@ -60,11 +64,10 @@ class Disco extends React.Component {
 			});
 	}
 
-	changeColor(colorCount, colors, counter) {
+	changeColor(colorCount, colors) {
 		let myLetters = Array.from(document.getElementsByClassName('letter'));
 		myLetters.forEach((letter, index) => {
 			let pointer = (index + colorCount) % colors.length;
-			console.log(pointer);
 			letter.style.color = colors[pointer];
 		});
 	}
@@ -85,7 +88,7 @@ class Disco extends React.Component {
 		let colorCount = 0;
 
 		this.timer = setInterval(() => {
-			this.pulse(counter);
+			this.pulse();
 			this.changeColor(colorCount, colors, counter);
 			counter--;
 			if (colorCount === colors.length) {
@@ -93,7 +96,6 @@ class Disco extends React.Component {
 			} else {
 				colorCount++;
 			}
-			// console.log(colorCount);
 			if (counter < 1) {
 				clearInterval(this.timer);
 			}
@@ -101,7 +103,7 @@ class Disco extends React.Component {
 
 		this.timerAlt = setInterval(() => {
 			setTimeout(() => {
-				this.pulseAlt(counter);
+				this.pulseAlt();
 				this.changeColor(colorCount, colors);
 				counter--;
 				if (colorCount === colors.length) {
