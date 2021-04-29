@@ -1,0 +1,36 @@
+body,
+html {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.page-content {
+	background-color: #000;
+	min-height: 100vh;
+}
+
+.disco-container {
+	min-height: 100vh;
+	display: grid;
+	position: relative;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+    justify-content: space-evenly;
+	/* margin: 2rem 5rem; */
+}
+
+.ball {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	transition: all 0.5s;
+}
+
+.letter {
+	justify-self: center;
+	align-self: center;
+	font-size: 7rem;
+	font-weight: bold;
+	font-family: sans-serif;
+	transition: all 0.3s;
+}
